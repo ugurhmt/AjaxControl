@@ -1,12 +1,42 @@
-#AjaxControl
+# AjaxControl
 
 Create Ajax get and post request via AjaxControl typescript namespace
 
-#Author : Uğur Hamurpet ugurhamurpet@gmail.com
-#Create Date : 08/09/2019
-#Description : 
+# Authors
 
-#Hierarchy
+* **Uğur Hamurpet** - *ugurhamurpet@gmail.com* - [ugurhmt](https://github.com/PurpleBooth)
+
+# Getting Started
+
+If you want to develop this project follow steps below
+
+* Clone the project on your pc
+* Download npm
+* Install typescript using npm
+
+```
+  npm install -g typescript
+```
+
+If you want to only use project. Usage is as follows
+
+```
+
+function AjaxLoader( url, element ){
+  new AjaxControl.AjaxRequest().get(url, function( response ) {
+      $( element ).html( response );
+  }, $);
+}
+
+AjaxLoader( "https://github.com", "div#githubResponse" );
+
+```
+
+To display detailed usage please open the index.html file
+
+# Coding Hierarchy
+  
+  ``` 
   Namespace : AjaxControl
   Interface : IAjaxControl
   Class{
@@ -25,17 +55,14 @@ Create Ajax get and post request via AjaxControl typescript namespace
       }
     }
    }
+  ```
 
-This namespace needs to jquery for start ajax request.
+# Build With
+  
+This namespace needs to [jquery](https://jquery.com/download/) for start ajax request.
 
-Usage is as follows
+# Compile and Deployment
 
-function AjaxLoader( url, element ){
-  new AjaxControl.AjaxRequest().get(url, function( response ) {
-      $( element ).html( response );
-  }, $);
-}
+You can use link below for deploy or compile application
 
-AjaxLoader( "https://github.com", "div#githubResponse" );
-
-To display detailed usage please open the index.html file
+[https://code.visualstudio.com/docs/typescript/typescript-compiling](https://code.visualstudio.com/docs/typescript/typescript-compiling)
