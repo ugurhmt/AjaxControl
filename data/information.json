@@ -1,0 +1,26 @@
+{
+    "information" : {
+          "user" : [
+                  {
+                      "name" : "Jhon",
+                      "surname" : "Smith",
+                      "age" : "24"
+                  },
+                  {
+                      "name" : "Jemia",
+                      "surname" : "Lennister",
+                      "age" : "35"
+                  }
+              ],
+          "city" : [
+              {
+                "city_id" : 1,
+                "city_name" : "İstanbul"
+              },
+              {
+                "city_id" : 2,
+                "city_name" : "Ankara"
+              }
+            ]
+    }
+}
