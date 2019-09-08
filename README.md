@@ -1,7 +1,10 @@
-#Project Name : AjaxControl
+#AjaxControl
+
+Create Ajax get and post request via AjaxControl typescript namespace
+
 #Author : Uğur Hamurpet ugurhamurpet@gmail.com
 #Create Date : 08/09/2019
-#Description : Create Ajax get and post request via AjaxControl typescript namespace
+#Description : 
 
 #Hierarchy
   Namespace : AjaxControl
