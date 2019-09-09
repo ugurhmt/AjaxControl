@@ -4,7 +4,7 @@ Create Ajax get and post request via AjaxControl typescript namespace
 
 # Authors
 
-* **Uğur Hamurpet** - *ugurhamurpet@gmail.com* - [ugurhmt](https://github.com/PurpleBooth)
+* **Uğur Hamurpet** - *ugurhamurpet@gmail.com* - [ugurhmt](https://github.com/ugurhmt)
 
 # Getting Started
 
