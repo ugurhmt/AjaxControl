@@ -25,7 +25,7 @@ If you want to only use project. Usage is as follows
 function AjaxLoader( url, element ){
   new AjaxControl.AjaxRequest().get(url, function( response ) {
       $( element ).html( response );
-  }, $);
+  });
 }
 
 AjaxLoader( "https://github.com", "div#githubResponse" );
@@ -46,12 +46,17 @@ To display detailed usage please open the index.html file
     AjaxRequest: {
       method : {
         startRequest : ( options : Options, successCallback : Function, errorCallback? : Function ),
-        get : ( url : string, successCallback : Function, globfunction : any ),
-        getJson : ( url : string, successCallback : Function, globfunction : any ),
-        getData : ( url : string, data = "", successCallback : Function, globfunction : any ),
-        getDataJson : ( url : string, data = "", successCallback : Function, globfunction : any ),
-        postData: ( url : string, data = "", successCallback : Function, globfunction : any ),
-        postDataJson : ( url : string, data = "", successCallback : Function, globfunction : any )
+        get : ( url : string, successCallback : Function ),
+        getJson : ( url : string, successCallback : Function ),
+        getData : ( url : string, data = "", successCallback : Function ),
+        getDataJson : ( url : string, data = "", successCallback : Function ),
+        postData: ( url : string, data = "", successCallback : Function ),
+        postDataJson : ( url : string, data = "", successCallback : Function )
+      }
+    },
+    AjaxFormSubmit:{
+      method : {
+        submitForm : ( formName : string, successCallback : Function, onsubmitFunction? : Function )
       }
     }
    }

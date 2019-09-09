@@ -4,7 +4,7 @@ namespace AjaxControl{
         
         startRequest( options : Options, successCallback : Function, errorCallback? : Function ){
 
-            let $ = options.globfunction;
+            const $ : any = (window as any)["jQuery"];
 
             if( $ != null ){
 
@@ -29,32 +29,32 @@ namespace AjaxControl{
                     }
                 });
 
-            }
+            }else console.log( "AjaxControl needs to Jquery! Please include Jquery on your project!" );
 
         }
 
-        get( url : string, successCallback : Function, globfunction : any ){
-            this.startRequest( new Options({ url : url }, globfunction), successCallback );
+        get( url : string, successCallback : Function ){
+            this.startRequest( new Options({ url : url }), successCallback );
         }
 
-        getJson( url : string, successCallback : Function, globfunction : any ){
-            this.startRequest( new Options({ url : url, dataType : "Json" }, globfunction), successCallback );
+        getJson( url : string, successCallback : Function ){
+            this.startRequest( new Options({ url : url, dataType : "Json" }), successCallback );
         }
 
-        getData( url : string, data = "", successCallback : Function, globfunction : any ){
-            this.startRequest( new Options({ url : url, data : data }, globfunction), successCallback );
+        getData( url : string, data : any = "", successCallback : Function ){
+            this.startRequest( new Options({ url : url, data : data }), successCallback );
         }
 
-        getDataJson( url : string, data = "", successCallback : Function, globfunction : any ){
-            this.startRequest( new Options({ url : url, data : data, dataType : "Json" }, globfunction), successCallback );
+        getDataJson( url : string, data : any = "", successCallback : Function ){
+            this.startRequest( new Options({ url : url, data : data, dataType : "Json" }), successCallback );
         }
 
-        postData( url : string, data = "", successCallback : Function, globfunction : any ){
-            this.startRequest( new Options({ url : url, data : data }, globfunction), successCallback );
+        postData( url : string, data : any = "", successCallback : Function ){
+            this.startRequest( new Options({ url : url, data : data }), successCallback );
         }
 
-        postDataJson( url : string, data = "", successCallback : Function, globfunction : any ){
-            this.startRequest( new Options({ url : url, data : data, dataType : "Json" }, globfunction), successCallback );
+        postDataJson( url : string, data : any = "", successCallback : Function ){
+            this.startRequest( new Options({ url : url, data : data, dataType : "Json" }), successCallback );
         }
 
     }
