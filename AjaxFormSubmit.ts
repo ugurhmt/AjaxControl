@@ -5,27 +5,29 @@ namespace AjaxControl{
     export class AjaxFormSubmit extends AjaxRequest{
         
         submitForm( formName : string, successCallback : Function, onsubmitFunction? : Function ){
-            const $ : any = (window as any)["jQuery"];
+            
+            const localThis = this;
 
             if(onsubmitFunction != null) onsubmitFunction();
 
-            if( $ != null ){
+            if( localThis.$ != null ){
 
-                $(function(){
+                localThis.$(function(){
 
-                    $( "form[ name = "+ formName +" ]" ).submit((e:any) => {
+                    localThis.$( "form[ name = "+ formName +" ]" ).submit((e:any) => {
                     
-                        let form = $(e.currentTarget)[0];
-                        let data = new FormData( form );
+                        let form = localThis.$(e.currentTarget);
+                        let data = new FormData( form[0] );
                         let url = form.attr("action");
-                        let method = form.attr("method"); 
-                            
-                        /* if( method == "post" )
-                            this.postDataJson(url, data, successCallback);
+                        let method = form.attr("method");
+                        
+                        if( method == "post" )
+                            localThis.postDataJson(url, data, successCallback);
                         else
-                            this.getDataJson(url, data, successCallback); */
+                            localThis.getDataJson(url, data, successCallback);
                         
                         return false;
+                        
                     });
 
                 });

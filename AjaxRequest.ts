@@ -2,18 +2,20 @@ namespace AjaxControl{
 
     export class AjaxRequest implements IAjaxControl {
         
+        public $ : any = (window as any)["jQuery"];
+
         startRequest( options : Options, successCallback : Function, errorCallback? : Function ){
 
-            const $ : any = (window as any)["jQuery"];
+            if( this.$ != null ){
 
-            if( $ != null ){
-
-                $.ajax({
+                this.$.ajax({
                     url: options.url,
                     type: options.method,
                     data: options.data,
                     dataType : options.dataType,
                     cache: false,
+                    processData: false,
+                    contentType: false,
                     success: function (result:any) {
                         successCallback(result);
                     },
@@ -22,10 +24,8 @@ namespace AjaxControl{
                             errorCallback(result);
                             return;
                         }
-                        var errorTitle = "Error in (" + options.url + ")";
-                        var fullError = JSON.stringify(result);
-                        console.log(errorTitle);
-                        console.log(fullError);
+                        console.log("Error in (" + options.url + ")");
+                        console.log(JSON.stringify(result));
                     }
                 });
 
@@ -49,11 +49,11 @@ namespace AjaxControl{
             this.startRequest( new Options({ url : url, data : data, dataType : "Json" }), successCallback );
         }
 
-        postData( url : string, data : any = "", successCallback : Function ){
+        postData( url : string, data : any, successCallback : Function ){
             this.startRequest( new Options({ url : url, data : data }), successCallback );
         }
 
-        postDataJson( url : string, data : any = "", successCallback : Function ){
+        postDataJson( url : string, data : any, successCallback : Function ){
             this.startRequest( new Options({ url : url, data : data, dataType : "Json" }), successCallback );
         }
 

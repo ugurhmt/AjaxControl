@@ -7,19 +7,19 @@
     <script type="text/javascript" src="dist/build.js"></script>
     <script>
         new AjaxControl.AjaxRequest().get("data/information.json", function() {
-            ///write code
+            ///write ajax success code
         });
 
-        /* new AjaxControl.AjaxFormSubmit().submitForm("form", function() {
-            alert("sa");
-        }); */
+        new AjaxControl.AjaxFormSubmit().submitForm("form", function() {
+            ///write ajax success code
+        });
 
     </script>
     <title>Document</title>
 </head>
 <body>
     
-    <form action="" name="form" method="post">
+    <form action="data/information.json" name="form" method="post">
         <input type="text" name="username" id="username">
         <input type="text" name="mail" id="mail">
         <input type="submit" value="Gönder">

@@ -16,16 +16,18 @@ var AjaxControl;
 (function (AjaxControl) {
     var AjaxRequest = /** @class */ (function () {
         function AjaxRequest() {
+            this.$ = window["jQuery"];
         }
         AjaxRequest.prototype.startRequest = function (options, successCallback, errorCallback) {
-            var $ = window["jQuery"];
-            if ($ != null) {
-                $.ajax({
+            if (this.$ != null) {
+                this.$.ajax({
                     url: options.url,
                     type: options.method,
                     data: options.data,
                     dataType: options.dataType,
                     cache: false,
+                    processData: false,
+                    contentType: false,
                     success: function (result) {
                         successCallback(result);
                     },
@@ -34,10 +36,8 @@ var AjaxControl;
                             errorCallback(result);
                             return;
                         }
-                        var errorTitle = "Error in (" + options.url + ")";
-                        var fullError = JSON.stringify(result);
-                        console.log(errorTitle);
-                        console.log(fullError);
+                        console.log("Error in (" + options.url + ")");
+                        console.log(JSON.stringify(result));
                     }
                 });
             }
@@ -59,11 +59,9 @@ var AjaxControl;
             this.startRequest(new AjaxControl.Options({ url: url, data: data, dataType: "Json" }), successCallback);
         };
         AjaxRequest.prototype.postData = function (url, data, successCallback) {
-            if (data === void 0) { data = ""; }
             this.startRequest(new AjaxControl.Options({ url: url, data: data }), successCallback);
         };
         AjaxRequest.prototype.postDataJson = function (url, data, successCallback) {
-            if (data === void 0) { data = ""; }
             this.startRequest(new AjaxControl.Options({ url: url, data: data, dataType: "Json" }), successCallback);
         };
         return AjaxRequest;
@@ -79,20 +77,20 @@ var AjaxControl;
             return _super !== null && _super.apply(this, arguments) || this;
         }
         AjaxFormSubmit.prototype.submitForm = function (formName, successCallback, onsubmitFunction) {
-            var $ = window["jQuery"];
+            var localThis = this;
             if (onsubmitFunction != null)
                 onsubmitFunction();
-            if ($ != null) {
-                $(function () {
-                    $("form[ name = " + formName + " ]").submit(function (e) {
-                        var form = $(e.currentTarget)[0];
-                        var data = new FormData(form);
+            if (localThis.$ != null) {
+                localThis.$(function () {
+                    localThis.$("form[ name = " + formName + " ]").submit(function (e) {
+                        var form = localThis.$(e.currentTarget);
+                        var data = new FormData(form[0]);
                         var url = form.attr("action");
                         var method = form.attr("method");
-                        /* if( method == "post" )
-                            this.postDataJson(url, data, successCallback);
+                        if (method == "post")
+                            localThis.postDataJson(url, data, successCallback);
                         else
-                            this.getDataJson(url, data, successCallback); */
+                            localThis.getDataJson(url, data, successCallback);
                         return false;
                     });
                 });
