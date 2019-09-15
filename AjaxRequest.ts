@@ -50,11 +50,11 @@ namespace AjaxControl{
         }
 
         postData( url : string, data : any, successCallback : Function ){
-            this.startRequest( new Options({ url : url, data : data }), successCallback );
+            this.startRequest( new Options({ url : url, method: "post", data : data }), successCallback );
         }
 
         postDataJson( url : string, data : any, successCallback : Function ){
-            this.startRequest( new Options({ url : url, data : data, dataType : "Json" }), successCallback );
+            this.startRequest( new Options({ url : url, method: "post", data : data, dataType : "Json" }), successCallback );
         }
 
     }

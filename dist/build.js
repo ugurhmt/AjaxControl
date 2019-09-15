@@ -59,10 +59,10 @@ var AjaxControl;
             this.startRequest(new AjaxControl.Options({ url: url, data: data, dataType: "Json" }), successCallback);
         };
         AjaxRequest.prototype.postData = function (url, data, successCallback) {
-            this.startRequest(new AjaxControl.Options({ url: url, data: data }), successCallback);
+            this.startRequest(new AjaxControl.Options({ url: url, method: "post", data: data }), successCallback);
         };
         AjaxRequest.prototype.postDataJson = function (url, data, successCallback) {
-            this.startRequest(new AjaxControl.Options({ url: url, data: data, dataType: "Json" }), successCallback);
+            this.startRequest(new AjaxControl.Options({ url: url, method: "post", data: data, dataType: "Json" }), successCallback);
         };
         return AjaxRequest;
     }());
