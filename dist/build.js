@@ -78,11 +78,12 @@ var AjaxControl;
         }
         AjaxFormSubmit.prototype.submitForm = function (formName, successCallback, onsubmitFunction) {
             var localThis = this;
-            if (onsubmitFunction != null)
-                onsubmitFunction();
             if (localThis.$ != null) {
                 localThis.$(function () {
                     localThis.$("form[ name = " + formName + " ]").submit(function (e) {
+                        if (onsubmitFunction != null)
+                            if (!onsubmitFunction())
+                                return;
                         var form = localThis.$(e.currentTarget);
                         var data = new FormData(form[0]);
                         var url = form.attr("action");

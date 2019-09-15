@@ -11,7 +11,10 @@
         });
 
         new AjaxControl.AjaxFormSubmit().submitForm("form", function() {
-            ///write ajax success code
+            console.log("success");
+        },function () {
+            console.log("control");
+            return true;
         });
 
     </script>

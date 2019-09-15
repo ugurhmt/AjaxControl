@@ -8,23 +8,21 @@ namespace AjaxControl{
             
             const localThis = this;
 
-            if(onsubmitFunction != null) onsubmitFunction();
-
             if( localThis.$ != null ){
 
                 localThis.$(function(){
 
                     localThis.$( "form[ name = "+ formName +" ]" ).submit((e:any) => {
                     
+                        if(onsubmitFunction != null) if(!onsubmitFunction()) return;
+                        
                         let form = localThis.$(e.currentTarget);
                         let data = new FormData( form[0] );
                         let url = form.attr("action");
                         let method = form.attr("method");
                         
-                        if( method == "post" )
-                            localThis.postDataJson(url, data, successCallback);
-                        else
-                            localThis.getDataJson(url, data, successCallback);
+                        if( method == "post" ) localThis.postDataJson(url, data, successCallback);
+                        else localThis.getDataJson(url, data, successCallback);
                         
                         return false;
                         
