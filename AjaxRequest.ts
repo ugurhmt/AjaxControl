@@ -27,11 +27,11 @@ namespace AjaxControl{
                         console.log("Error in (" + options.url + ")");
                         console.log(JSON.stringify(result));
                     },
-                    beforeSend : function( result:any ){
-                        if( beforeSend ) beforeSend(result);
+                    beforeSend : function(){
+                        if( beforeSend ) beforeSend();
                     },
-                    complete : function ( result:any ) {
-                        if( complete ) complete( result );
+                    complete : function () {
+                        if( complete ) complete();
                     }
                 });
 
