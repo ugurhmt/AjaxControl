@@ -13,8 +13,8 @@ namespace AjaxControl{
                 localThis.$(function(){
 
                     localThis.$( "form[ name = "+ formName +" ]" ).submit((e:any) => {
-                    
-                        if( onsubmitFunction ) if(!onsubmitFunction()) return;
+                        
+                        if( onsubmitFunction && !onsubmitFunction() ) return false;
                         
                         let form = localThis.$(e.currentTarget);
                         let data = new FormData( form[0] );

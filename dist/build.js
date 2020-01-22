@@ -89,9 +89,8 @@ var AjaxControl;
             if (localThis.$ != null) {
                 localThis.$(function () {
                     localThis.$("form[ name = " + formName + " ]").submit(function (e) {
-                        if (onsubmitFunction)
-                            if (!onsubmitFunction())
-                                return;
+                        if (onsubmitFunction && !onsubmitFunction())
+                            return false;
                         var form = localThis.$(e.currentTarget);
                         var data = new FormData(form[0]);
                         var url = form.attr("action");
